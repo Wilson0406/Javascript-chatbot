@@ -1,5 +1,4 @@
 // javascript
-let quotes = ["You have enemies? Good. That means you've stood up for something, sometime in your life."];
 document.addEventListener("DOMContentLoaded", () => {
     // let quotes = [];
     const inputField = document.getElementById("input")
@@ -10,11 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(`I typed ${input}`);
             output(input);
             updateQuote();
+            updateJoke();
     }
   });
 });
-
-// let quotes = [];
+let quotes = ["You have enemies? Good. That means you've stood up for something, sometime in your life."];
 async function updateQuote() {
     // Fetch a random quote from the Quotable API
     const response = await fetch("https://api.quotable.io/random");
@@ -24,7 +23,6 @@ async function updateQuote() {
     //console.log(strData);
     if (response.ok) {
         quotes = data.content;
-        //console.log(quotes);
       // Update DOM elements
       // cite.textContent = data.author;
     } else {
@@ -32,10 +30,22 @@ async function updateQuote() {
       console.log(data);
     }
   }
+  
+let jokes = ["Hear about the new restaurant called Karma? There’s no menu: You get what you deserve."];
+async function updateJoke(){
+const request = await fetch("https://api.icndb.com/jokes/random");
+const joke = await request.json();
+if (request.ok) {
+        jokes = joke.value.joke;
+    } 
+else {
+      jokes.push("Please try again");
+      console.log(joke);
+     }
+}
 
 function output(input){
       let product;
-      
   // Regex remove non word/space chars
   // Trim trailing whitespce
   // Remove digits - not sure if this is best
@@ -65,9 +75,14 @@ function output(input){
         addChat(input, product);
     }
     else if (text.match(/(quote|quotes)/gi)){
-        //updateQuote();
+        // if no match, check if message contains `quote`
         product = quotes[Math.floor(Math.random() * quotes.length)];
         addChat(input, `${quotes}`);
+    }
+    else if (text.match(/(joke|jokes)/gi)){
+        // if no match, check if message contains `joke`
+        product =jokes[Math.floor(Math.random() * jokes.length)];
+        addChat(input, `${jokes}`);
     }
     else{
         // if all else fails -> random alternatives
