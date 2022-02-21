@@ -4,7 +4,6 @@
 
 html {
 	height: 100%;
-
 }
 
 body {
@@ -16,6 +15,27 @@ body {
 	background-color: rgba(223, 242, 247, .5);
 	height: 100%;
 	margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px grey; 
+  border-radius: 3px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #010101;
 }
 
 span {
