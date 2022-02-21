@@ -1,4 +1,5 @@
 // javascript
+let quotes = ["You have enemies? Good. That means you've stood up for something, sometime in your life."];
 document.addEventListener("DOMContentLoaded", () => {
     // let quotes = [];
     const inputField = document.getElementById("input")
@@ -10,10 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
             output(input);
             updateQuote();
             updateJoke();
+            updateFact();
     }
   });
 });
-let quotes = ["You have enemies? Good. That means you've stood up for something, sometime in your life."];
+
+// let quotes = [];
 async function updateQuote() {
     // Fetch a random quote from the Quotable API
     const response = await fetch("https://api.quotable.io/random");
@@ -44,8 +47,22 @@ else {
      }
 }
 
+let facts = ["There are no clocks in Las Vegas gambling casinos."];
+async function updateFact(){
+const request = await fetch("https://uselessfacts.jsph.pl/random.json?language=en");
+const fact = await request.json();
+if (request.ok) {
+        facts = fact.text;
+    } 
+else {
+      facts.push("Please try again");
+      console.log(fact);
+     }
+}
+
 function output(input){
       let product;
+      
   // Regex remove non word/space chars
   // Trim trailing whitespce
   // Remove digits - not sure if this is best
@@ -75,14 +92,19 @@ function output(input){
         addChat(input, product);
     }
     else if (text.match(/(quote|quotes)/gi)){
-        // if no match, check if message contains `quote`
+        //updateQuote();
         product = quotes[Math.floor(Math.random() * quotes.length)];
         addChat(input, `${quotes}`);
     }
     else if (text.match(/(joke|jokes)/gi)){
-        // if no match, check if message contains `joke`
+        //updateQuote();
         product =jokes[Math.floor(Math.random() * jokes.length)];
         addChat(input, `${jokes}`);
+    }
+    else if (text.match(/(fact|facts)/gi)){
+        //updateQuote();
+        product = facts[Math.floor(Math.random() * facts.length)];
+        addChat(input, `${facts}`);
     }
     else{
         // if all else fails -> random alternatives
