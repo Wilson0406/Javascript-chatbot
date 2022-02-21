@@ -16,7 +16,7 @@ const prompts = [
   ["i love you"],
   ["happy", "good", "fun", "wonderful", "fantastic", "cool"],
   ["bad", "bored", "tired"],
-  ["help me", "tell me story", "tell me joke"],
+  ["help me", "tell me story", "tell me something"],
   ["ah", "yes", "ok", "okay", "nice"],
   ["bye", "good bye", "goodbye", "see you later"],
   ["what should i eat today"],
@@ -24,7 +24,7 @@ const prompts = [
   ["what", "why", "how", "where", "when"],
   ["no","not sure","maybe","no thanks"],
   [""],
-  ["haha","ha","lol","hehe","funny","joke"]
+  ["haha","ha","lol","hehe","funny","story"]
 ]
 
 // Possible responses, in respective order
@@ -44,13 +44,13 @@ const replies = [
   ],
   ["I am infinite"],
   ["I am just a bot", "I am a bot. What are you?"],
-  ["The one true God, JavaScript"],
-  ["I am nameless", "I don't have a name"],
+  ["The one true God, JavaScript", "Mr Wilson Vidyut Doloy"],
+  ["I am Brooke", "People call me Brooke"],
   ["I love you too", "Me too"],
   ["Have you ever felt bad?", "Glad to hear it"],
   ["Why?", "Why? You shouldn't!", "Try watching TV"],
   ["What about?", "Once upon a time..."],
-  ["Tell me a story", "Tell me a joke", "Tell me about yourself"],
+  ["Tell me a story", "Tell me a something new", "Tell me about yourself"],
   ["Bye", "Goodbye", "See you later"],
   ["Sushi", "Pizza"],
   ["Bro!"],
@@ -68,9 +68,11 @@ const alternatives = [
   "Bro...",
   "Try again",
   "I'm listening...",
-  "I don't understand :/"
+  "I don't understand :/",
+  "Come again...",
+  "What is this behaviour?",
 ]
 
 // Anything else you want :)
 
-const coronavirus = ["Please stay home", "Wear a mask", "Fortunately, I don't have COVID", "These are uncertain times", ]
+const coronavirus = ["Please stay home", "Wear a mask", "Fortunately, I don't have COVID", "These are uncertain times", "Sanitize regularly", "Maintain Social Distance", ]
